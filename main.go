@@ -12,27 +12,25 @@ import (
 	"strconv"
 	"time"
 )
-
-var DB *crud.DB
-
-type Jobs struct {
-	Id          int       `sql:"auto_increment primary-key"`
-	Title       string    `db:"title"`
-	Salarytop   int       `db:"salarytop"`
-	Salarybase  int       `db:"salarybase"`
-	Description string    `db:"description"`
-	Published   time.Time `db:"published"`
-}
-
-type TplData struct {
-	Jobs []*Jobs
-}
+type (
+	Jobs struct {
+		Id          int       `sql:"auto_increment primary-key"`
+		Title       string    `db:"title"`
+		Salarytop   int       `db:"salarytop"`
+		Salarybase  int       `db:"salarybase"`
+		Description string    `db:"description"`
+		Published   time.Time `db:"published"`
+	}
+	TplData struct {
+		Jobs []*Jobs
+	}
+)
 
 var (
+	DB               *crud.DB
 	htmlTplEngine    *template.Template
 	htmlTplEngineErr error
 )
-
 func ServeFiles(w http.ResponseWriter, r *http.Request) {
 	wd, err := os.Getwd()
 	if err != nil {
