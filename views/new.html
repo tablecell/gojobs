@@ -1,14 +1,29 @@
 <!DOCTYPE html>
 <head>
-    <title>Sylph  https://www.getpapercss.com/assets/paper.css</title>
+    <title>    gojobs</title>
     <link rel="stylesheet" type="text/css" href=" /assets/paper.min.css" />
 
 <style>
+ 
  nav a{
  border-bottom-color: var(--secondary);
 }
+.form-group{
+display:flex;
+}
+.form-group :nth-child(1){
 
+order:1; 
+width:120px;
+
+}
+.form-group :nth-child(2){
+order:2; 
+outline:0px solid red;
+display:inline;
+}
 </style>
+
 </head>
 <body>
 <nav class="border fixed split-nav">
@@ -46,34 +61,9 @@
         <main>
 
 <!-- Jumbotron -->
-<style>
-.seg{
-display:-moz-inline-stack;
-
-}
-.seg-2{
-width:2em;
-}
-
-.form-group{
-display:flex;
-}
-.form-group :nth-child(1){
-
-order:1; 
-width:120px;
-
-}
-.form-group :nth-child(2){
-order:2; 
-outline:0px solid red;
-display:inline;
-}
-</style>
 
  
  
-<hr/>
 <form method="post"  >
  
   <div class="form-group"   >
@@ -83,7 +73,7 @@ display:inline;
  <div class="form-group" >
 
  <label   >  招聘要求:    </label>
-  <textarea     name="jd"  cols="80" rows="8" ></textarea>
+  <textarea     name="jd"  cols="60" rows="8" ></textarea>
  
 
  </div>
@@ -91,7 +81,7 @@ display:inline;
 
  <div class="form-group"  >
   <label for="paperSwitch7" class="paper-switch-label">
-     996   
+     是否996   
   </label>
   <label class="paper-switch">
     <input id="paperSwitch7" name="is996" type="checkbox" />
@@ -123,12 +113,12 @@ display:inline;
  <div class="form-group" >
  
  
- <span   > 远程  </span>
+ <span   > 可远程  </span>
   <label for="paperSwitch3" class="paper-switch-tile"   >  
     <input id="paperSwitch3" name="remote" type="checkbox" />
     <div class="paper-switch-tile-card border"    style="display:block;">
-      <div class="paper-switch-tile-card-front border background-danger">Declined</div>
-      <div class="paper-switch-tile-card-back border background-success">Accepted</div>
+      <div class="paper-switch-tile-card-front border background-danger">X</div>
+      <div class="paper-switch-tile-card-back border background-success">V</div>
     </div>
   </label>
 </div>
