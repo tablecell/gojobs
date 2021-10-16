@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<head>
+    <title>Sylph  https://www.getpapercss.com/assets/paper.css</title>
+    <link rel="stylesheet" type="text/css" href=" /assets/paper.min.css" />
+
+<style>
+ nav a{
+ border-bottom-color: var(--secondary);
+}
+
+</style>
+</head>
+<body>
+<nav class="border fixed split-nav">
+  <div class="nav-brand">
+    <h3><a href="/">   简聘</a></h3>
+  </div>
+  <div class="collapsible">
+    <input id="collapsible1" type="checkbox" name="collapsible1">
+    <label for="collapsible1">
+      <div class="bar1"></div>
+      <div class="bar2"></div>
+      <div class="bar3"></div>
+    </label>
+    <div class="collapsible-body">
+      <ul class="inline">
+        <li><a href="/"> 最新</a></li>
+  
+        <li><a href="/new">发布</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<div class=' container margin-top-large'   style="margin-top:4em">
+        <header>
+            <h1><a href="/">    </a></h1>
+ 
+            <nav>
+                <ul  class="inline">
+          
+                
+                </ul>
+            
+            </nav>
+        </header>
+        <main>
+
+<!-- Jumbotron -->
+<style>
+.seg{
+display:-moz-inline-stack;
+
+}
+.seg-2{
+width:2em;
+}
+
+.form-group{
+display:flex;
+}
+.form-group :nth-child(1){
+
+order:1; 
+width:120px;
+
+}
+.form-group :nth-child(2){
+order:2; 
+outline:0px solid red;
+display:inline;
+}
+</style>
+
+ 
+ 
+<hr/>
+<form method="post"  >
+ 
+  <div class="form-group"   >
+
+ <label     >  标题: </label>
+	<input  type="text" name="title" value=""   size=50/> </div>
+ <div class="form-group" >
+
+ <label   >  招聘要求:    </label>
+  <textarea     name="jd"  cols="80" rows="8" ></textarea>
+ 
+
+ </div>
+
+
+ <div class="form-group"  >
+  <label for="paperSwitch7" class="paper-switch-label">
+     996   
+  </label>
+  <label class="paper-switch">
+    <input id="paperSwitch7" name="is996" type="checkbox" />
+    <span class="paper-switch-slider round"></span>
+  </label>
+</div>
+
+ <div class="form-group"  >
+    <label for="input-range"> 薪资:</label>
+   <div>
+	<input  style="display:inline"  type="text" name="salarybase" value="" />  - 
+		<input   style="display:inlnie"  type="text" name="salarytop"  size=10  value="" />  
+  </div>
+</div>
+ 
+
+<!--
+ <div class="form-group"  >
+    <label for="percentage"> max </label>
+    <label>
+/*      <input   style="" type="range" name="note" id="input-range" min="0" max="10"> */
+    <input type="range" name="percentage" id="percentage" min="0" max="20000" oninput="output.value = this.value">
+    <output id="output" for="percentage">50%</output>
+    </label>
+</div>
+ 
+-->
+
+ <div class="form-group" >
+ 
+ 
+ <span   > 远程  </span>
+  <label for="paperSwitch3" class="paper-switch-tile"   >  
+    <input id="paperSwitch3" name="remote" type="checkbox" />
+    <div class="paper-switch-tile-card border"    style="display:block;">
+      <div class="paper-switch-tile-card-front border background-danger">Declined</div>
+      <div class="paper-switch-tile-card-back border background-success">Accepted</div>
+    </div>
+  </label>
+</div>
+
+ <div class="form-group" > 
+
+		 <label>&nbsp;</label>
+	<div>		
+	<button  class="btn-secondary"   > 发布 </button><br/>
+	</div>
+</div>
+	
+</form>
+</main></div></body></html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<head>
+    <title>Sylph  https://www.getpapercss.com/assets/paper.css</title>
+    <link rel="stylesheet" type="text/css" href="/assets/paper.min.css" />
+
+<style>
+ nav a{
+ border-bottom-color: var(--secondary);
+}
+
+</style>
+</head>
+<body>
+<nav class="border fixed split-nav">
+  <div class="nav-brand">
+    <h3><a href="/">   简聘</a></h3>
+  </div>
+  <div class="collapsible">
+    <input id="collapsible1" type="checkbox" name="collapsible1">
+    <label for="collapsible1">
+      <div class="bar1"></div>
+      <div class="bar2"></div>
+      <div class="bar3"></div>
+    </label>
+    <div class="collapsible-body">
+      <ul class="inline">
+        <li><a href="/"> 最新</a></li>
+  
+        <li><a href="/new">发布</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class=' container margin-top-large'   style="margin-top:4em">
+        <header>
+            <h1><a href="/">    </a></h1>
+ 
+            <nav>
+                <ul  class="inline">
+       
+                
+                </ul>
+            
+            </nav>
+        </header>
+        <main>
+ {{range .Jobs}}
+
+<article class="article paper"  >
+  <h4 >  {{.Title}} </h4 >
+
+  <!-- <p class="article-meta">   <?php print   $item['salarytop'];?> </p> -->
+
+  <font color="red" class="text-lead"> {{.Salarybase}}K - {{.Salarytop}}K</font	>
+
+  <p>  {{.Description}} </p>
+
+  <div class="row"> 
+<!-- 
+    <button>Read More</button>
+    <button>5 Comments</button>
+-->
+  </div>
+</article>
+  {{end}}
+
+</main></div></body></html>
