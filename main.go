@@ -91,7 +91,7 @@ func main() {
 
 		err = DB.Create(book)
 		fmt.Println(err)
- http.Redirect(w, r, "/", 302)
+ 		http.Redirect(w, r, "/", 302)
 //		tmpl := template.Must(template.ParseFiles("./test.html"))
 //		tmpl.Execute(w, struct{ Success bool }{true})
 	})
