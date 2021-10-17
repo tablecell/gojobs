@@ -64,11 +64,14 @@ func main() {
 		_ = htmlTplEngine.ExecuteTemplate(w, "home.html", data)
 
 	})
-
 	http.HandleFunc("/new", func(w http.ResponseWriter, r *http.Request) {
 		if "POST" == r.Method {
-			fmt.Println(r.FormValue("is996"))
-			result, err := db.Exec(`INSERT INTO jobs(title, mail,description, salarybase,salarytop,is996,published) VALUES (?, ?, ?,?,?,?,?)`, r.FormValue("title"), r.FormValue("email"), r.FormValue("jd"), r.FormValue("salarybase"), r.FormValue("salarytop"), r.FormValue("is996"), time.Now())
+		      is996:=0
+		      if  "1" ==  r.FormValue("is996") {
+		         is996=1
+		      }
+			fmt.Println("is996is",is996)
+			result, err := db.Exec(`INSERT INTO jobs(title, mail,description, salarybase,salarytop,is996,published) VALUES (?, ?, ?,?,?,?,?)`, r.FormValue("title"), r.FormValue("email"), r.FormValue("jd"), r.FormValue("salarybase"), r.FormValue("salarytop"), is996, time.Now())
 			fmt.Println(result, err)
 			http.Redirect(w, r, "/", 302)
 		}
