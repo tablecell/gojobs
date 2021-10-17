@@ -14,14 +14,14 @@ import (
 
 type (
 	Jobs struct {
-		Id         int    `sql:"auto_increment primary-key"`
-		Title      string `db:"title"`
-		Salarytop  int    `db:"salarytop"`
-		Salarybase int    `db:"salarybase"`
-		Mail       string `db:"mail"`
-		Gender     int    `db:"gender"`
-		Is996      int    `db:"is996"`
-		Level      int    `db:"level"`
+		Id          int       `sql:"auto_increment primary-key"`
+		Title       string    `db:"title"`
+		Salarytop   int       `db:"salarytop"`
+		Salarybase  int       `db:"salarybase"`
+		Mail        string    `db:"mail"`
+		Gender      int       `db:"gender"`
+		Is996       int       `db:"is996"`
+		Level       int       `db:"level"`
 		Description string    `db:"description"`
 		Remote      string    `db:"remote"`
 		Published   time.Time `db:"published"`
@@ -32,36 +32,30 @@ type (
 )
 
 var (
- 
 	htmlTplEngine    *template.Template
 	htmlTplEngineErr error
 )
 
- 
 func main() {
- 
-
-
-
 
 	db, err := sql.Open("sqlite3", "jobs.db")
 	fmt.Println(err)
-	
-        htmlTplEngine = template.New("htmlTplEngine")
+
+	htmlTplEngine = template.New("htmlTplEngine")
 	_, htmlTplEngineErr = htmlTplEngine.ParseGlob("views/*.html")
 	if nil != htmlTplEngineErr {
 		log.Panic(htmlTplEngineErr.Error())
 	}
 
-	fs := http.FileServer(http.Dir("assets/")) 
+	fs := http.FileServer(http.Dir("assets/"))
 	http.Handle("/assets/", http.StripPrefix("/assets/", fs))
-	
+
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		jobs := []Jobs{}
-		result, err := db.Query("SELECT  title,description, salarybase,salarytop,published FROM jobs WHERE id > ?", 0)
+		result, err := db.Query("SELECT  title,description, is996,salarybase,salarytop,published FROM jobs WHERE id > ?", 0)
 		for result.Next() {
 			var j Jobs
-			err := result.Scan( &j.Title,&j.Description, &j.Salarybase, &j.Salarytop,    &j.Published) // check err
+			err := result.Scan(&j.Title, &j.Description, &j.Is996, &j.Salarybase, &j.Salarytop, &j.Published) // check err
 			fmt.Println(err)
 			jobs = append(jobs, j)
 		}
@@ -73,8 +67,8 @@ func main() {
 
 	http.HandleFunc("/new", func(w http.ResponseWriter, r *http.Request) {
 		if "POST" == r.Method {
-                fmt.Println(r.FormValue("is996"))
-			result, err := db.Exec(`INSERT INTO jobs(title, mail,description, salarybase,salarytop,is996,published) VALUES (?, ?, ?,?,?,?,?)`, r.FormValue("title"), r.FormValue("email"),r.FormValue("jd"), r.FormValue("salarybase"), r.FormValue("salarytop"), r.FormValue("is996"),time.Now())
+			fmt.Println(r.FormValue("is996"))
+			result, err := db.Exec(`INSERT INTO jobs(title, mail,description, salarybase,salarytop,is996,published) VALUES (?, ?, ?,?,?,?,?)`, r.FormValue("title"), r.FormValue("email"), r.FormValue("jd"), r.FormValue("salarybase"), r.FormValue("salarytop"), r.FormValue("is996"), time.Now())
 			fmt.Println(result, err)
 			http.Redirect(w, r, "/", 302)
 		}
