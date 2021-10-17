@@ -40,32 +40,31 @@ var (
  
 func main() {
  
-	fs := http.FileServer(http.Dir("assets/")) //real dir
-	http.Handle("/assets/", http.StripPrefix("/assets/", fs))
 
-	htmlTplEngine = template.New("htmlTplEngine")
+
+
 
 	db, err := sql.Open("sqlite3", "jobs.db")
 	fmt.Println(err)
+	
+        htmlTplEngine = template.New("htmlTplEngine")
 	_, htmlTplEngineErr = htmlTplEngine.ParseGlob("views/*.html")
 	if nil != htmlTplEngineErr {
 		log.Panic(htmlTplEngineErr.Error())
 	}
 
+	fs := http.FileServer(http.Dir("assets/")) 
+	http.Handle("/assets/", http.StripPrefix("/assets/", fs))
+	
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-
-		//mux.GET("/", func(w http.ResponseWriter, r *http.Request) {
 		jobs := []Jobs{}
-
 		result, err := db.Query("SELECT  title,description, salarybase,salarytop,published FROM jobs WHERE id > ?", 0)
-
 		for result.Next() {
 			var j Jobs
 			err := result.Scan( &j.Title,&j.Description, &j.Salarybase, &j.Salarytop,    &j.Published) // check err
 			fmt.Println(err)
 			jobs = append(jobs, j)
 		}
-
 		fmt.Println(err)
 		data := TplData{Jobs: jobs}
 		_ = htmlTplEngine.ExecuteTemplate(w, "home.html", data)
@@ -73,16 +72,12 @@ func main() {
 	})
 
 	http.HandleFunc("/new", func(w http.ResponseWriter, r *http.Request) {
-	
-	
 		if "POST" == r.Method {
                 fmt.Println(r.FormValue("is996"))
 			result, err := db.Exec(`INSERT INTO jobs(title, mail,description, salarybase,salarytop,is996,published) VALUES (?, ?, ?,?,?,?,?)`, r.FormValue("title"), r.FormValue("email"),r.FormValue("jd"), r.FormValue("salarybase"), r.FormValue("salarytop"), r.FormValue("is996"),time.Now())
-
 			fmt.Println(result, err)
 			http.Redirect(w, r, "/", 302)
 		}
-
 		_ = htmlTplEngine.ExecuteTemplate(w, "new.html", nil)
 	})
 
