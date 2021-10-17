@@ -49,16 +49,16 @@
 
 <article class="article paper"  >
   <h4 >  {{.Title}} </h4 >
-
  
 
-  <font color="red" class="text-lead"> {{.Salarybase}}K - {{.Salarytop}}K</font	>
+<div class="row flex-edges">
 
-  <p>  {{.Description}} </p>
-
-  <div class="row"> 
+  <div class="col-1">  {{ if .Is996  }} <span class="badge danger">996</span> {{ end}} </div>
+  <div class="col-11">   <font color="red" class="text-lead"> {{.Salarybase}}K - {{.Salarytop}}K</font	> </div>
  
-  </div>
+
+</div>
+   <p>  {{.Description}} </p>
 </article>
   {{end}}
 
