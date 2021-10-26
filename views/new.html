@@ -1,137 +1,117 @@
 <!DOCTYPE html>
-<head>
-    <title>    gojobs</title>
-    <link rel="stylesheet" type="text/css" href=" /assets/paper.min.css" />
+<html lang="en">
+  <head>
+    <title> gojobs </title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+    <!-- Use default theme for example. The CSS of each theme is built seperately, don't include multiple themes toghther.    https://unpkg.com/luda@0.1.13/dist/css/l  -->
+<link rel="stylesheet" href="https://unpkg.com/terminal.css@0.7.2/dist/terminal.min.css" />
 
 <style>
- 
- nav a{
- border-bottom-color: var(--secondary);
-}
-.form-group{
-display:flex;
-}
-.form-group :nth-child(1){
-
-order:1; 
+label{
+display:inline-block;
 width:120px;
 
 }
-.form-group :nth-child(2){
-order:2; 
-outline:0px solid red;
-display:inline;
+input[type="email"], input[type="number"], input[type="password"], input[type="search"], input[type="text"] ,textarea{
+width:auto;
 }
+
 </style>
-
-</head>
-<body>
-<nav class="border fixed split-nav">
-  <div class="nav-brand">
-    <h3><a href="/">   简聘</a></h3>
-  </div>
-  <div class="collapsible">
-    <input id="collapsible1" type="checkbox" name="collapsible1">
-    <label for="collapsible1">
-      <div class="bar1"></div>
-      <div class="bar2"></div>
-      <div class="bar3"></div>
-    </label>
-    <div class="collapsible-body">
-      <ul class="inline">
-        <li><a href="/"> 最新</a></li>
+  </head>
+  <body><div class="container ">
+ <div class="terminal-nav">
+    <div class="terminal-logo">
+      <div class="logo terminal-prompt"><a href="#" class="no-style">gojobs</a></div>
+    </div>
+    <nav class="terminal-menu">
+      <ul>
+        <li><a class="menu-item" href="/">Home </a></li>
   
-        <li><a href="/new">发布</a></li>
+        <li><a class="menu-item" href="/new">New </a></li>
       </ul>
+    </nav>
+ 
+</div>
+</div>
+
+  <div class="container ">
+
+
+  <div class="grid">
+  
+    <div class="col-3">
+    
     </div>
-  </div>
-</nav>
-<div class=' container margin-top-large'   style="margin-top:4em">
-        <header>
-            <h1><a href="/">    </a></h1>
+    
+  <div class="col-6">
+<form action="/new" method="post">
+    <fieldset>
+      <legend> New job</legend>
+      <div class="form-group">
+        <label for="email">title:</label>
+        <input id="email" name="title" required=""   size="50"  minlength="5" placeholder="test"   type="text">
+      </div>
+      <div class="form-group">
+        <label for="text">email:</label>
+        <input id="text" name="email" required=""  size="50" type="email" minlength="5" placeholder="test">
+      </div>
+      <div class="form-group">
+        <label for="itext">salary:</label>
+        <input id="itext" name="salarybase" minlength="10"   size="25" type="text">  -   <input id="itext" name="salarytop" minlength="10" type="text">
+      </div>
+      
  
-            <nav>
-                <ul  class="inline">
-          
-                
-                </ul>
-            
-            </nav>
-        </header>
-        <main>
+      <div class="form-group">
+        <label for="radio">996:</label>
+        <input name="is996"   type="radio" value="1">996    <input name="is996"  type="radio"  value="0" >955
+      </div>
+      <div class="form-group">
+        <label for="check">remote:</label>
+        <input for="check" id="check"  name="remote" type="checkbox">
+      </div>
+      <!--
+      <div class="form-group">
+        <label for="select">Select field:</label>
+        <select id="select" name="select">
+          <option> Option 01 </option>
+          <option> Option 02 </option>
+        </select>
+      </div>
+      -->
+      <div class="form-group">
+        <label for="tarea">Textarea:</label>
+        <textarea id="tarea" cols="50" rows="5" name="jd">Textarea text</textarea>
+      </div>
+      <div class="form-group">
+        <label for="submit"   style="visibility:hidden">Input Button:</label>
+       <button class="btn btn-primary">Publish</button>
+      </div>
 
-<!-- Jumbotron -->
 
  
- 
-<form method="post"  >
- 
-  <div class="form-group"   >
-
- <label     >  标题: </label>
-	<input  type="text" name="title" value=""   size=50/> </div>
- <div class="form-group" >
- <label     >  email: </label>
-	<input  type="email" name="email" value=""   size=50/> </div>
-  <div class="form-group"   >	
- <label   >  招聘要求:    </label>
-  <textarea     name="jd"  cols="50" rows="8" ></textarea>
+      
+    </fieldset>
+  </form>
  
 
- </div>
 
 
- <div class="form-group"  >
-  <label for="paperSwitch7" class="paper-switch-label">
-     是否996   
-  </label>
-  <label class="paper-switch">
-    <input id="paperSwitch7" name="is996" type="checkbox" value="1" />
-    <span class="paper-switch-slider round"></span>
-  </label>
+
+
+
+
 </div>
 
- <div class="form-group"  >
-    <label for="input-range"> 薪资:</label>
-   <div>
-	<input  style="display:inline"  type="text" name="salarybase" value="" />  - 
-		<input   style="display:inlnie"  type="text" name="salarytop"  size=10  value="" />  
-  </div>
-</div>
- 
-
-<!--
- <div class="form-group"  >
-    <label for="percentage"> max </label>
-    <label>
-/*      <input   style="" type="range" name="note" id="input-range" min="0" max="10"> */
-    <input type="range" name="percentage" id="percentage" min="0" max="20000" oninput="output.value = this.value">
-    <output id="output" for="percentage">50%</output>
-    </label>
-</div>
- 
--->
-
- <div class="form-group" >
- 
- 
- <span   > 可远程  </span>
-  <label for="paperSwitch3" class="paper-switch-tile"   >  
-    <input id="paperSwitch3" name="remote" type="checkbox" />
-    <div class="paper-switch-tile-card border"    style="display:block;">
-      <div class="paper-switch-tile-card-front border background-danger">X</div>
-      <div class="paper-switch-tile-card-back border background-success">V</div>
+    <div class="col-3">
+    
     </div>
-  </label>
+ 
+ 
+
+
+
 </div>
 
- <div class="form-group" > 
-
-		 <label>&nbsp;</label>
-	<div>		
-	<button  class="btn-secondary"   > 发布 </button><br/>
-	</div>
-</div>
-	
-</form>
-</main></div></body></html>
+  </div></body>
+</html>
