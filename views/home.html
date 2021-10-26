@@ -1,65 +1,95 @@
 <!DOCTYPE html>
-<head>
-    <title>    gojobs</title>
-    <link rel="stylesheet" type="text/css" href=" /assets/paper.min.css" />
+<html lang="en">
+  <head>
+    <title> gojobs</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+    <!-- Use default theme for example. The CSS of each theme is built seperately, don't include multiple themes toghther.    https://unpkg.com/luda@0.1.13/dist/css/l  -->
 
-<style>
- nav a{
- border-bottom-color: var(--secondary);
-}
 
-</style>
-</head>
-<body>
-<nav class="border fixed split-nav">
-  <div class="nav-brand">
-    <h3><a href="/">   简聘</a></h3>
-  </div>
-  <div class="collapsible">
-    <input id="collapsible1" type="checkbox" name="collapsible1">
-    <label for="collapsible1">
-      <div class="bar1"></div>
-      <div class="bar2"></div>
-      <div class="bar3"></div>
-    </label>
-    <div class="collapsible-body">
-      <ul class="inline">
-        <li><a href="/"> 最新</a></li>
+<link rel="stylesheet" href="https://unpkg.com/terminal.css@0.7.2/dist/terminal.min.css" />
+
+ 
+
+  </head>
+  <body>    <body><div class="container ">
+ <div class="terminal-nav">
+    <div class="terminal-logo">
+      <div class="logo terminal-prompt"><a href="#" class="no-style">gojobs</a></div>
+    </div>
+    <div  class="terminal-menu"  >
+      <ul>
+        <li><a class="menu-item" href="/">Home </a></li>
   
-        <li><a href="/new">发布</a></li>
+        <li><a class="menu-item" href="/new">New </a></li>
       </ul>
     </div>
-  </div>
-</nav>
+</div>
+</div>
 
-<div class=' container margin-top-large'   style="margin-top:4em">
-        <header>
-            <h1><a href="/">    </a></h1>
- 
-            <nav>
-                <ul  class="inline">
-       
-                
-                </ul>
-            
-            </nav>
-        </header>
-        <main>
+  <div class="container ">
+
+
+  <div class="grid">
+  
+    <div class="col-3">
+    
+    </div>
+    
+  <div class="col-6">
+
+
+
+<div class="terminal-timeline">
+
  {{range .Jobs}}
 
-<article class="article paper"  >
-  <h4 >  {{.Title}} </h4 >
- 
+    <div class="terminal-card">
 
-<div class="row flex-edges">
 
-  <div class="col-1">  {{ if .Is996  }} <span class="badge danger">996</span> {{ end}} </div>
-  <div class="col-11">   <font color="red" class="text-lead"> {{.Salarybase}}K - {{.Salarytop}}K</font	> </div>
- 
+      <header>  {{.Title}}  </header>
+      <div style="overflow:hidden" > 
+          {{ if .Is996 }} 
+          <div class="terminal-alert terminal-alert-error" style="float:left;background:crimson;color:yellow">
+       <span class="badge danger"><b>996</b></span>
+            </div>
+ {{ end}}
+        <div class="col-11"     style="float:right"> <font color="red" class="text-lead"> {{.Salarybase}}K - {{.Salarytop}}K</font	> </div>
+
+   
+    </div>
+
+       <div>
+       {{.Description}}
+      </div>
+    </div>
+   {{end}}
+    <div class="terminal-card">
+      <header>Card Title</header>
+      <div>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Expedita, quas
+        ex vero enim in doloribus officiis ullam vel nam esse sapiente velit
+        incidunt. Eaque quod et, aut maiores excepturi sint.
+      </div>
+    </div>
+  </div>
+
+
+
+
+
 
 </div>
-   <p>  {{.Description}} </p>
-</article>
-  {{end}}
 
-</main></div></body></html>
+    <div class="col-3">
+    
+    </div>
+ 
+ 
+
+
+
+</div>
+
+  </div></body>
+</html>
